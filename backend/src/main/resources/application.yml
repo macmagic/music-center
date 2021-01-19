@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:54321/db
+    username: app
+    password: temporal
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+  servlet:
+    multipart:
+      max-file-size: 300MB
+      max-request-size: 300MB
+  cloud:
+    stream:
+      bindings:
+        uploadMusic:
+          destination: upload-music
+          content-type: application/json
+        uploadMusicInput:
+          destination: upload-music
+          content-type: application/json
+      kafka:
+        binder:
+          brokers: localhost:9092
